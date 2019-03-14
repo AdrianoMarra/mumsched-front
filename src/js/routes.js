@@ -2,7 +2,7 @@ angular
 .module('app')
 .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$breadcrumbProvider', function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $breadcrumbProvider) {
 
-  $urlRouterProvider.otherwise('/dashboard');
+  $urlRouterProvider.otherwise('/home');
 
   $ocLazyLoadProvider.config({
     // Set to true if you want to see what and when is dynamically loaded
@@ -55,7 +55,7 @@ angular
     }
   })
   .state('app.main', {
-    url: '/dashboard',
+    url: '/template',
     templateUrl: 'views/main.html',
     //page title goes here
     ncyBreadcrumb: {
@@ -104,21 +104,74 @@ angular
     }
   })
 
+  //-----------------------------------------------------------------
+  // MUMSched login pages
+  //=================================================================
+  .state('appSimple.home', {
+    url: '/home',
+    templateUrl: 'views/home.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/home.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.loginStudent', {
+    url: '/student/login',
+    templateUrl: 'views/student/login.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/student/studentLogin.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.loginFaculty', {
+    url: '/faculty/login',
+    templateUrl: 'views/faculty/login.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/faculty/facultyLogin.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.admin', {
+    url: '/admin/login',
+    templateUrl: 'views/admin/login.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/admin/adminLogin.js']
+        });
+      }]
+    }
+  })
+
+  //-----------------------------------------------------------------
   // Additional Pages
-  .state('appSimple.login', {
-    url: '/login',
-    templateUrl: 'views/pages/login.html'
-  })
-  .state('appSimple.register', {
-    url: '/register',
-    templateUrl: 'views/pages/register.html'
-  })
-  .state('appSimple.404', {
-    url: '/404',
-    templateUrl: 'views/pages/404.html'
-  })
-  .state('appSimple.500', {
-    url: '/500',
-    templateUrl: 'views/pages/500.html'
-  })
+  //=================================================================
+  // .state('appSimple.register', {
+  //   url: '/register',
+  //   templateUrl: 'views/pages/register.html'
+  // })
+  // .state('appSimple.404', {
+  //   url: '/404',
+  //   templateUrl: 'views/pages/404.html'
+  // })
+  // .state('appSimple.500', {
+  //   url: '/500',
+  //   templateUrl: 'views/pages/500.html'
+  // })
 }]);
