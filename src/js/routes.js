@@ -133,6 +133,19 @@ angular
     }
   })
 
+  .state('appSimple.newStudent', {
+    url: '/student/new',
+    templateUrl: 'views/student/new.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/student/studentController.js']
+        });
+      }]
+    }
+  })
+
   .state('appSimple.loginFaculty', {
     url: '/faculty/login',
     templateUrl: 'views/faculty/login.html',
@@ -146,6 +159,19 @@ angular
     }
   })
 
+  .state('appSimple.newFaculty', {
+    url: '/faculty/new',
+    templateUrl: 'views/faculty/new.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/faculty/facultyController.js']
+        });
+      }]
+    }
+  })
+
   .state('appSimple.admin', {
     url: '/admin/login',
     templateUrl: 'views/admin/login.html',
@@ -154,6 +180,58 @@ angular
         // you can lazy load controllers
         return $ocLazyLoad.load({
           files: ['js/controllers/admin/adminLogin.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.newAdmin', {
+    url: '/admin/new',
+    templateUrl: 'views/admin/new.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/admin/adminController.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.newEntry', {
+    url: '/entry/new',
+    templateUrl: 'views/entry/new.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/entry/entryController.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.newBlock', {
+    url: '/block/new',
+    templateUrl: 'views/block/new.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/block/blockController.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.newCourse', {
+    url: '/course/new',
+    templateUrl: 'views/course/new.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/course/courseController.js']
         });
       }]
     }
