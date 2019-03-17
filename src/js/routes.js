@@ -159,19 +159,21 @@ angular
     }
   })
 
+
   //-----------------------------------------------------------------
-  // Additional Pages
+  // MUMSched student dashboard pages
   //=================================================================
-  // .state('appSimple.register', {
-  //   url: '/register',
-  //   templateUrl: 'views/pages/register.html'
-  // })
-  // .state('appSimple.404', {
-  //   url: '/404',
-  //   templateUrl: 'views/pages/404.html'
-  // })
-  // .state('appSimple.500', {
-  //   url: '/500',
-  //   templateUrl: 'views/pages/500.html'
-  // })
+  .state('appSimple.studentDashboard', {
+    url: '/student/dashboard',
+    templateUrl: 'views/student/dashboard.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/student/student.js', 'js/controllers/student/studentLogin.js']
+        });
+      }]
+    }
+  })
+
 }]);
