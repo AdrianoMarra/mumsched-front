@@ -1,0 +1,19 @@
+<!-- Navbar -->
+<div ng-include="'views/student/layouts/navbar.html'" include-replace></div>
+<div class="app-body" style="margin-top: 0px;">
+  <!-- Navigation -->
+  <div ng-include="'views/student/layouts/sidebar-nav.html'" include-replace></div>
+  <!-- Main content -->
+  <main class="main">
+    <!-- Breadcrumb -->
+
+    <div class="container-fluid">
+      <ui-view></ui-view>
+    </div>
+    <!-- /.conainer-fluid -->
+  </main>
+
+</div>
+
+<!-- Footer -->
+<!-- <div ng-include="'views/common/footer.html'" include-replace></div> -->

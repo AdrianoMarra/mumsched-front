@@ -1,11 +1,59 @@
 //studentLogin.js
 angular
 .module('app')
-.controller('studentLogin', ['$scope', function($scope) {
-  $scope.contacts = [];
+.controller('studentLogin', ['$scope', '$http', '$httpParamSerializer', '$state', function($scope, $http, $httpParamSerializer, $state) {
+  
+  var studentData = JSON.parse(localStorage.getItem('studentData'));
+  if(studentData != undefined){
+    $state.go('appSimple.studentDashboard')
+  }
 
   $scope.login = function() {
-    $scope.contacts.push({name: $scope.contactname, number: $scope.contactnumber});
-    console.log($scope.contacts);
+    $scope.userInfo = [];
+    $scope.userInfo.push({email: $scope.studentUsername, password: $scope.studentPassword});
+    validateLogin($scope.userInfo[0]);
   }
+
+  function validateLogin(userInfo) {
+
+    console.log(userInfo);
+
+    $http.post(
+      'http://localhost:8000/api/login/student',
+      $httpParamSerializer(userInfo),
+      {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+      .then(function successCallback(response) {
+
+        if (response.data.response == false) {
+          showErrorMsg();
+        } else {
+          createSession(response.data.response)
+        }
+
+      }, function errorCallback(response) {
+        console.log(response);
+      });
+  }
+
+  function showErrorMsg() {
+    alert("Username or password don't match.");
+  }
+
+  function createSession(resp) {
+    if (typeof(Storage) !== "undefined") {
+      localStorage.setItem('studentData', JSON.stringify(resp));
+      $state.go('appSimple.studentDashboard');
+    } else {
+      console.log("Sorry! No Web Storage support..");
+    }
+  }
+
+  $scope.logout = function() {
+    localStorage.removeItem("studentData");
+    $state.go('appSimple.home')
+  }
+
 }]);
+
+
+
