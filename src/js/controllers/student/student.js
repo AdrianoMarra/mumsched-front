@@ -6,8 +6,4 @@ angular
   if($scope.studentData == undefined){
     $state.go('appSimple.loginStudent')
   }
-
 }]);
-
-
-
