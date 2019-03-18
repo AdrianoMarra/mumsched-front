@@ -3,30 +3,33 @@ angular
 .module('app')
 .controller('adminLogin', ['$scope', '$http', '$httpParamSerializer', '$state', function($scope, $http, $httpParamSerializer, $state) {
   
-  var userName = localStorage.adminName;
-  if(userName != undefined){
+  var adminData = JSON.parse(localStorage.getItem('adminData'));
+  if(adminData != undefined){
     $state.go('appSimple.adminDashboard')
   }
 
-  $scope.userInfo = [];
   $scope.login = function() {
-    $scope.userInfo.push({userName: $scope.adminUsername, password: $scope.adminPassword});
+    $scope.userInfo = [];
+    $scope.userInfo.push({email: $scope.adminUsername, password: $scope.adminPassword});
     validateLogin($scope.userInfo[0]);
   }
 
   function validateLogin(userInfo) {
-    $http.get(
-      'http://www.apilayer.net/api/live?access_key=646037689b8b5f304fd20d3c85bba01f&format=1&currencies=AUD,BRL,EUR',
-      // $httpParamSerializer(userInfo),
-      {headers: {'Content-Type': 'application/json'}})
+
+    $http.post(
+      'http://172.19.143.87:8000/api/login/admin',
+      $httpParamSerializer(userInfo),
+      {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
       .then(function successCallback(response) {
-        if(userInfo.userName == "admin" && userInfo.password == "123") {
-          createSession(userInfo);
-        } else {
+
+        if (response.data.response == false) {
           showErrorMsg();
+        } else {
+          createSession(response.data.response)
         }
+
       }, function errorCallback(response) {
-        showErrorMsg();
+        console.log(response);
       });
   }
 
@@ -34,9 +37,9 @@ angular
     alert("Username or password don't match.");
   }
 
-  function createSession(userInfo) {
+  function createSession(resp) {
     if (typeof(Storage) !== "undefined") {
-      localStorage.adminName = userInfo.userName;
+      localStorage.setItem('adminData', JSON.stringify(resp));
       $state.go('appSimple.adminDashboard');
     } else {
       console.log("Sorry! No Web Storage support..");
@@ -44,7 +47,7 @@ angular
   }
 
   $scope.logout = function() {
-    localStorage.removeItem("adminName");
+    localStorage.removeItem("adminData");
     $state.go('appSimple.home')
   }
 

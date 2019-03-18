@@ -1,13 +1,9 @@
-//studentLogin.js
+//adminLogin.js
 angular
 .module('app')
 .controller('admin', ['$scope', '$http', '$httpParamSerializer', '$state', function($scope, $http, $httpParamSerializer, $state) {
-  $scope.adminName = localStorage.adminName;
-  if($scope.adminName == undefined){
+  $scope.adminData = JSON.parse(localStorage.getItem('adminData'));
+  if($scope.adminData == undefined){
     $state.go('appSimple.loginAdmin')
   }
-
 }]);
-
-
-
