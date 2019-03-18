@@ -176,4 +176,69 @@ angular
     }
   })
 
+  .state('appSimple.adminDashboard', {
+    url: '/admin/dashboard',
+    templateUrl: 'views/admin/dashboard.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/admin/admin.js', 'js/controllers/admin/adminLogin.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.facultyDashboard', {
+  url: '/faculty/dashboard',
+  templateUrl: 'views/faculty/dashboard.html',
+  resolve: {
+    loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+      // you can lazy load controllers
+      return $ocLazyLoad.load({
+        files: ['js/controllers/faculty/faculty.js', 'js/controllers/faculty/facultyLogin.js']
+      });
+    }]
+  }
+  })
+
+  .state('appSimple.facultyDashboard.blocksPreference', {
+  url: '/block-preference',
+  templateUrl: 'views/faculty/teste.html',
+  resolve: {
+    loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+      // you can lazy load controllers
+      return $ocLazyLoad.load({
+        files: ['js/controllers/faculty/faculty.js', 'js/controllers/faculty/facultyLogin.js']
+      });
+    }]
+  }
+  })
+
+  .state('appSimple.facultyDashboard.coursesPreference', {
+  url: '/course-preference',
+  templateUrl: 'views/faculty/teste02.html',
+  resolve: {
+    loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+      // you can lazy load controllers
+      return $ocLazyLoad.load({
+        files: ['js/controllers/faculty/faculty.js', 'js/controllers/faculty/facultyLogin.js']
+      });
+    }]
+  }
+  })
+
+  .state('appSimple.facultyDashboard.schedule', {
+  url: '/schedule',
+  templateUrl: 'views/faculty/teste03.html',
+  resolve: {
+    loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+      // you can lazy load controllers
+      return $ocLazyLoad.load({
+        files: ['js/controllers/faculty/faculty.js', 'js/controllers/faculty/facultyLogin.js']
+      });
+    }]
+  }
+  })
+
 }]);

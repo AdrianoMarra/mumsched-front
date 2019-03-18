@@ -2,8 +2,8 @@
 angular
 .module('app')
 .controller('student', ['$scope', '$http', '$httpParamSerializer', '$state', function($scope, $http, $httpParamSerializer, $state) {
-  $scope.userName = localStorage.userName;
-  if($scope.userName == undefined){
+  $scope.studentData = JSON.parse(localStorage.getItem('studentData'));
+  if($scope.studentData == undefined){
     $state.go('appSimple.loginStudent')
   }
 

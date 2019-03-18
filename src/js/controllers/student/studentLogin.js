@@ -3,30 +3,35 @@ angular
 .module('app')
 .controller('studentLogin', ['$scope', '$http', '$httpParamSerializer', '$state', function($scope, $http, $httpParamSerializer, $state) {
   
-  var userName = localStorage.userName;
-  if(userName != undefined){
+  var studentData = JSON.parse(localStorage.getItem('studentData'));
+  if(studentData != undefined){
     $state.go('appSimple.studentDashboard')
   }
 
-  $scope.userInfo = [];
   $scope.login = function() {
-    $scope.userInfo.push({userName: $scope.studentUsername, password: $scope.studentPassword});
+    $scope.userInfo = [];
+    $scope.userInfo.push({email: $scope.studentUsername, password: $scope.studentPassword});
     validateLogin($scope.userInfo[0]);
   }
 
   function validateLogin(userInfo) {
-    $http.get(
-      'http://www.apilayer.net/api/live?access_key=646037689b8b5f304fd20d3c85bba01f&format=1&currencies=AUD,BRL,EUR',
-      // $httpParamSerializer(userInfo),
-      {headers: {'Content-Type': 'application/json'}})
+
+    console.log(userInfo);
+
+    $http.post(
+      'http://localhost:8000/api/login/student',
+      $httpParamSerializer(userInfo),
+      {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
       .then(function successCallback(response) {
-        if(userInfo.userName == "adriano" && userInfo.password == "123") {
-          createSession(userInfo);
-        } else {
+
+        if (response.data.response == false) {
           showErrorMsg();
+        } else {
+          createSession(response.data.response)
         }
+
       }, function errorCallback(response) {
-        showErrorMsg();
+        console.log(response);
       });
   }
 
@@ -34,9 +39,9 @@ angular
     alert("Username or password don't match.");
   }
 
-  function createSession(userInfo) {
+  function createSession(resp) {
     if (typeof(Storage) !== "undefined") {
-      localStorage.userName = userInfo.userName;
+      localStorage.setItem('studentData', JSON.stringify(resp));
       $state.go('appSimple.studentDashboard');
     } else {
       console.log("Sorry! No Web Storage support..");
@@ -44,7 +49,7 @@ angular
   }
 
   $scope.logout = function() {
-    localStorage.removeItem("userName");
+    localStorage.removeItem("studentData");
     $state.go('appSimple.home')
   }
 
