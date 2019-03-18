@@ -1,0 +1,46 @@
+<div class="animated fadeIn" ng-controller=adminStudentNew>
+  <div class="app flex-row align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+    	<div class="col-sm-6">
+	      <div class="card">
+	        <div class="card-header">
+	          <strong>Student</strong>
+	        </div>
+	        <div class="card-body">
+	          <div class="form-group">
+	            <label for="firstName">First Name</label>
+	            <input type="text" class="form-control" ng-model="student.firstName" placeholder="Enter your first name" value="{{student.firstName}}">
+	          </div>
+	          <div class="form-group">
+	            <label for="lastName">Last Name</label>
+	            <input type="text" class="form-control" ng-model="lastName" placeholder="Enter your last name">
+	          </div>
+	          <div class="form-group">
+	            <label for="nationality">Nationality</label>
+	            <input type="text" class="form-control" ng-model="nationality" placeholder="Nationality">
+	          </div>
+	          <div class="form-group">
+	            <label for="trackType">Track Type</label>
+	            <input type="text" class="form-control" ng-model="trackType" placeholder="Track Type">
+	          </div>
+	          <div class="form-group">
+	            <label for="email">Email</label>
+	            <input type="text" class="form-control" ng-model="email" placeholder="Email">
+	          </div>
+	          <div class="form-group">
+	            <label for="phone">Phone</label>
+	            <input type="text" class="form-control" ng-model="phone" placeholder="Phone">
+	          </div>
+	         </div>
+	         <div class="card-footer">
+	          <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+	          <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+	        </div>
+	        </div>
+	      </div>
+	    </div>
+      </div>
+    </div>
+  </div>
+</div>

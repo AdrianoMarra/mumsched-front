@@ -16,8 +16,6 @@ angular
 
   function validateLogin(userInfo) {
 
-    console.log(userInfo);
-
     $http.post(
       'http://localhost:8000/api/login/student',
       $httpParamSerializer(userInfo),

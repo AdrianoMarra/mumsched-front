@@ -1,0 +1,9 @@
+<div ng-controller=adminStudentList class="animated fadeIn"> 
+	<button ui-sref="appSimple.adminDashboard.studentNew">NEW STUDENT</button>
+	<ul>
+		<li ng-repeat="student in students">
+			{{ student }} 
+			<button ui-sref="appSimple.adminDashboard.studentEdit({id: student.id})">Edit</button>
+		</li>
+	</ul>
+</div>
