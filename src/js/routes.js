@@ -159,6 +159,7 @@ angular
     }
   })
 
+//new
   .state('appSimple.newFaculty', {
     url: '/faculty/new',
     templateUrl: 'views/faculty/new.html',
@@ -232,6 +233,111 @@ angular
         // you can lazy load controllers
         return $ocLazyLoad.load({
           files: ['js/controllers/course/courseController.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.newSection', {
+    url: '/section/new',
+    templateUrl: 'views/section/new.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/section/sectionController.js']
+        });
+      }]
+    }
+  })
+
+//lists
+  .state('appSimple.listEntry', {
+    url: '/entry/list',
+    templateUrl: 'views/entry/list.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/entry/entryController.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.listBlock', {
+    url: '/block/list',
+    templateUrl: 'views/block/list.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/block/blockController.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.listCourse', {
+    url: '/course/list',
+    templateUrl: 'views/course/list.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/course/courseController.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.listSection', {
+    url: '/section/list',
+    templateUrl: 'views/section/list.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/section/sectionController.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.listStudent', {
+    url: '/student/list',
+    templateUrl: 'views/student/list.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/student/studentController.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.listFaculty', {
+    url: '/faculty/list',
+    templateUrl: 'views/faculty/list.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/faculty/facultyController.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.listAdmin', {
+    url: '/admin/list',
+    templateUrl: 'views/admin/list.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/admin/adminController.js']
         });
       }]
     }

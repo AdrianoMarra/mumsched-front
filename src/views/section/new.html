@@ -1,0 +1,74 @@
+<header class="app-header navbar ng-scope">
+  <button class="navbar-toggler mobile-sidebar-toggler d-lg-none" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#!/home"></a>
+  <ul class="nav navbar-nav d-md-down-none">
+    <li class="nav-item px-3">
+      <a class="nav-link" href="#!/student/login">Admin1</a>
+    </li>
+  </ul>
+</header>
+
+<div class="animated fadeIn">
+  <div class="app flex-row align-items-center" ng-controller="sectionController">
+    <div class="container">
+      <div class="row justify-content-center">
+    	<div class="col-sm-6">
+	      <div class="card">
+	        <div class="card-header">
+	          <strong>Section</strong>
+	        </div>
+	        <div class="card-body">
+	         	<div class="form-group row">
+	             	<label class="col-md-3 col-form-label" for="seatsAvailable" >Seats Available</label>
+	            	<div class="col-md-9">
+	            		<input type="text" class="form-control" ng-model="seatsAvailable">
+            		</div>
+         		</div>
+	        	<div class="form-group row">
+	            	<label class="col-md-3 col-form-label" for="course">Course</label>
+		             <div class="col-md-9">
+		                <select id="course" ng-model="course" class="form-control" size="1">
+		                  <option value="0">Please select</option>
+		                  <option value="1">Option #1</option>
+		                  <option value="2">Option #2</option>
+		                  <option value="3">Option #3</option>
+		                </select>
+		            </div>
+	            </div>
+	            <div class="form-group row">
+	            	<label class="col-md-3 col-form-label" for="course">Block</label>
+		             <div class="col-md-9">
+		                <select id="block" ng-model="block" class="form-control" size="1">
+		                  <option value="0">Please select</option>
+		                  <option value="1">Option #1</option>
+		                  <option value="2">Option #2</option>
+		                  <option value="3">Option #3</option>
+		                </select>
+		            </div>
+	            </div>
+	            <div class="form-group row">
+	            	<label class="col-md-3 col-form-label" for="course">Faclty</label>
+		             <div class="col-md-9">
+		                <select id="faculty" ng-model="faculty" class="form-control" size="1">
+		                  <option value="0">Please select</option>
+		                  <option value="1">Option #1</option>
+		                  <option value="2">Option #2</option>
+		                  <option value="3">Option #3</option>
+		                </select>
+		            </div>
+	            </div>
+		    </div>
+	        <div class="card-footer">
+	          <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+	          <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+	        </div>
+	        </div>
+	        
+	      </div>
+	    </div>
+      </div>
+    </div>
+  </div>
+</div>
