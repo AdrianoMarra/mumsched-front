@@ -28,6 +28,14 @@
             <label for="registration_number">Registration Number</label>
             <input type="text" class="form-control" ng-model="student.registration_number" placeholder="Registration Number">
           </div>
+          <div class="form-group">
+            <label for="registration_number">Entry </label>
+            <select 
+              class="form-control col-md-3"
+              ng-options="entry as entry.date for entry in entries track by entry.id" 
+              ng-model="entry">
+            </select>
+          </div>
         </div>
         <div class="card-footer">
          	<button 

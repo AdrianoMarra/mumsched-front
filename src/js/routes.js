@@ -411,6 +411,46 @@ angular
     }
   })
 
+  //------------------------ Admin crud --------------------------
+  .state('appSimple.adminDashboard.admins', {
+    url: '/admins',
+    templateUrl: 'views/admin/admin-crud/list.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/admin/adminAdmin.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.adminDashboard.adminNew', {
+    url: '/admins/new',
+    templateUrl: 'views/admin/admin-crud/new.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/admin/adminAdmin.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.adminDashboard.adminEdit', {
+    url: '/admins/edit?id',
+    templateUrl: 'views/admin/admin-crud/new.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/admin/adminAdmin.js']
+        });
+      }]
+    }
+  })
+
   //-----------------------------------------------------------------
   // MUMSched faculty dashboard pages
   //=================================================================

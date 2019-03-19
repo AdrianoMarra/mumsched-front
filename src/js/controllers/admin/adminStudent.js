@@ -10,7 +10,16 @@ angular
   }
   $scope.isUpdate = false;
   $scope.student = {};
+  $scope.entry = {};
+  $scope.entries = {};
   var paramValue = $location.search().id;
+
+  $http.get('http://172.19.143.87:8000/api/entries',
+    {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+    .then(function successCallback(response) {
+      $scope.entries = response.data;
+    }, function errorCallback(response) {
+  });
 
   if(paramValue) {
     $scope.isUpdate = true;
@@ -18,6 +27,7 @@ angular
       {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
       .then(function successCallback(response) {
         $scope.student = response.data;
+        $scope.entry = $scope.entries.find(o => o.id == $scope.student.id_entry);
       }, function errorCallback(response) {
     });
   } else {
@@ -26,9 +36,9 @@ angular
 
   $scope.create = function() {
     //default
-    $scope.student.id_entry = 1;
     $scope.student.password = "12345";
 
+    $scope.student.id_entry = $scope.entry.id;
     $http.post('http://172.19.143.87:8000/api/students', $scope.student,
     {headers: {'Content-Type': 'application/json'}})
     .then(function successCallback(response) {
@@ -38,6 +48,7 @@ angular
   };
 
   $scope.update = function() {
+    $scope.student.id_entry = $scope.entry.id;
     $http.put('http://172.19.143.87:8000/api/students/' + paramValue, $scope.student,
     {headers: {'Content-Type': 'application/json'}})
     .then(function successCallback(response) {
@@ -57,6 +68,7 @@ angular
       $scope.students = response.data;
     }, function errorCallback(response) {
     });
+
   };
 
   $scope.delete = function(id) {
