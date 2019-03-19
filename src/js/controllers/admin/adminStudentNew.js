@@ -10,7 +10,7 @@ angular
   }
 
   $scope.student = {};
-  $http.get('http://localhost:8000/api/students',
+  $http.get('http://172.19.143.87:8000/api/students',
   // $httpParamSerializer(userInfo),
   {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
   .then(function successCallback(response) {

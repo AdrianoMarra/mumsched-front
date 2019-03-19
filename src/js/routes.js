@@ -173,7 +173,63 @@ angular
       loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
         // you can lazy load controllers
         return $ocLazyLoad.load({
-          files: ['js/controllers/student/student.js', 'js/controllers/student/studentLogin.js']
+          files: ['js/controllers/student/student.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.studentDashboard.availableCourses', {
+    url: '/available-courses',
+    templateUrl: 'views/student/available-courses.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/student/student.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.studentDashboard.registerToCourses', {
+    url: '/register-courses',
+    templateUrl: 'views/student/register-to-courses.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/student/student.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.studentDashboard.registerConfirm', {
+    url: '/confirmation',//?id/:?section',
+    // params: {
+    //   id: null,
+    //   section_id: null
+    // },
+    templateUrl: 'views/student/register-confirmation.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/student/student.js']
+        });
+      }]
+    }
+  })
+
+    .state('appSimple.studentDashboard.schedule', {
+    url: '/register-courses',
+    templateUrl: 'views/student/schedule.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/student/student.js']
         });
       }]
     }
@@ -189,7 +245,7 @@ angular
       loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
         // you can lazy load controllers
         return $ocLazyLoad.load({
-          files: ['js/controllers/admin/admin.js', 'js/controllers/admin/adminLogin.js']
+          files: ['js/controllers/admin/admin.js']
         });
       }]
     }
@@ -222,7 +278,7 @@ angular
     }
   })
 
-    .state('appSimple.adminDashboard.studentEdit', {
+  .state('appSimple.adminDashboard.studentEdit', {
     url: '/students/edit?id',
     templateUrl: 'views/admin/student-crud/new.html',
     resolve: {
@@ -245,7 +301,7 @@ angular
       loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
         // you can lazy load controllers
         return $ocLazyLoad.load({
-          files: ['js/controllers/faculty/faculty.js', 'js/controllers/faculty/facultyLogin.js']
+          files: ['js/controllers/faculty/faculty.js']
         });
       }]
     }
@@ -258,7 +314,7 @@ angular
       loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
         // you can lazy load controllers
         return $ocLazyLoad.load({
-          files: ['js/controllers/faculty/faculty.js', 'js/controllers/faculty/facultyLogin.js']
+          files: ['js/controllers/faculty/faculty.js']
         });
       }]
     }
@@ -271,7 +327,7 @@ angular
       loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
         // you can lazy load controllers
         return $ocLazyLoad.load({
-          files: ['js/controllers/faculty/faculty.js', 'js/controllers/faculty/facultyLogin.js']
+          files: ['js/controllers/faculty/faculty.js']
         });
       }]
     }
@@ -284,7 +340,7 @@ angular
       loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
         // you can lazy load controllers
         return $ocLazyLoad.load({
-          files: ['js/controllers/faculty/faculty.js', 'js/controllers/faculty/facultyLogin.js']
+          files: ['js/controllers/faculty/faculty.js']
         });
       }]
     }

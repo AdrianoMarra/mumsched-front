@@ -46,11 +46,6 @@ angular
     }
   }
 
-  $scope.logout = function() {
-    localStorage.removeItem("adminData");
-    $state.go('appSimple.home')
-  }
-
 }]);
 
 
