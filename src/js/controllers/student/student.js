@@ -103,6 +103,7 @@ angular
 	}];
   }
 
+
   $scope.coursesToRegister = function () {
 
 	$scope.blocks = [{
