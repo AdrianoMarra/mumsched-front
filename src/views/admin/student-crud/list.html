@@ -1,9 +1,49 @@
-<div ng-controller=adminStudentList class="animated fadeIn"> 
-	<button ui-sref="appSimple.adminDashboard.studentNew">NEW STUDENT</button>
-	<ul>
-		<li ng-repeat="student in students">
-			{{ student }} 
-			<button ui-sref="appSimple.adminDashboard.studentEdit({id: student.id})">Edit</button>
-		</li>
-	</ul>
+<div ng-controller="adminStudent" class="animated fadeIn"> 
+  <div class="card" ng-init=loadList()>
+    <div class="card-header">
+     	<button 
+    		ui-sref="appSimple.adminDashboard.studentNew"
+    		class="btn btn-sm btn-success">
+    		<i class="fa fa-dot-circle-o"></i> Add New Student
+    	</button>
+    </div>
+    <div class="card-body">
+     	<div class="row">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Nationality</th>
+                <th>Track Type</th>
+                <th>Email</th>
+                <th>Registration Number</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="student in students">
+                <td>{{ student.firstName }} </td>
+                <td>{{ student.lastName }} </td>
+                <td>{{ student.nacionality }}</td>
+                <td>{{ student.track_type}}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.registration_number }}</td>
+                <td>
+                 	<button 
+                		ui-sref="appSimple.adminDashboard.studentEdit({id: student.id})" 
+                		class="btn btn-sm btn-primary">
+                		<i class="fa fa-dot-circle-o"></i> Edit
+                	</button>
+                	<button 
+	                	ng-click= "delete(student.id)"
+	                 	class="btn btn-sm btn-danger">
+	                 	<i class="fa fa-ban"></i> Delete
+                	</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+	    </div>
+    </div>
 </div>
