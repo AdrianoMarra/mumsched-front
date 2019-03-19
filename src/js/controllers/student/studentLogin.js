@@ -5,7 +5,7 @@ angular
   
   var studentData = JSON.parse(localStorage.getItem('studentData'));
   if(studentData != undefined){
-    $state.go('appSimple.studentDashboard')
+    $state.go('appSimple.studentDashboard');
   }
 
   $scope.login = function() {
@@ -44,11 +44,6 @@ angular
     } else {
       console.log("Sorry! No Web Storage support..");
     }
-  }
-
-  $scope.logout = function() {
-    localStorage.removeItem("studentData");
-    $state.go('appSimple.home')
   }
 
 }]);

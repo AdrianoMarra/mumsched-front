@@ -7,4 +7,10 @@ angular
     $state.go('appSimple.loginFaculty')
   }
 
+
+  $scope.logout = function() {
+    localStorage.removeItem("facultyData");
+    $state.go('appSimple.home')
+  }
+
 }]);

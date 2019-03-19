@@ -6,4 +6,11 @@ angular
   if($scope.adminData == undefined){
     $state.go('appSimple.loginAdmin')
   }
+
+
+  $scope.logout = function() {
+    localStorage.removeItem("adminData");
+    $state.go('appSimple.home')
+  }
+
 }]);
