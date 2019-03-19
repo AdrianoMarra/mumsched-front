@@ -28,14 +28,31 @@
             <label for="registration_number">Registration Number</label>
             <input type="text" class="form-control" ng-model="student.registration_number" placeholder="Registration Number">
           </div>
-         </div>
-         <div class="card-footer">
-          <button type="submit" ng-click= "create()" class="btn btn-sm btn-primary" ng-hide="isUpdate">
-          	<i class="fa fa-dot-circle-o"></i> 
-          	Submit
-          </button>
-          <button type="submit" ng-click= "update()" class="btn btn-sm btn-primary" ng-hide="!isUpdate"><i class="fa fa-dot-circle-o"></i>Update</button>
-          <button type="reset" ng-click= "cancel()"class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Cancel</button>
+        </div>
+        <div class="card-footer">
+         	<button 
+	         	type="submit" 
+	         	ng-click= "create()" 
+	         	class="btn btn-sm btn-primary" 
+	         	ng-hide="isUpdate">
+	          	<i class="fa fa-dot-circle-o"></i> 
+	          	Submit
+        	</button>
+         	<button 
+	         	type="submit" 
+	         	ng-click= "update()" 
+	         	class="btn btn-sm btn-primary" 
+	         	ng-hide="!isUpdate">
+	         	<i class="fa fa-dot-circle-o"></i>
+	         	Update
+        	</button>
+        	<button 
+	        	type="reset" 
+	        	ng-click= "cancel()"
+	        	class="btn btn-sm btn-danger">
+	        	<i class="fa fa-ban"></i> 
+	        	Cancel
+       		</button>
         </div>
     </div>
 </div>
