@@ -203,7 +203,7 @@ angular
       loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
         // you can lazy load controllers
         return $ocLazyLoad.load({
-          files: ['js/controllers/admin/adminStudentList.js']
+          files: ['js/controllers/admin/adminStudent.js']
         });
       }]
     }
@@ -216,7 +216,7 @@ angular
       loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
         // you can lazy load controllers
         return $ocLazyLoad.load({
-          files: ['js/controllers/admin/adminStudentNew.js']
+          files: ['js/controllers/admin/adminStudent.js']
         });
       }]
     }
@@ -229,7 +229,7 @@ angular
       loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
         // you can lazy load controllers
         return $ocLazyLoad.load({
-          files: ['js/controllers/admin/adminStudentNew.js']
+          files: ['js/controllers/admin/adminStudent.js']
         });
       }]
     }
