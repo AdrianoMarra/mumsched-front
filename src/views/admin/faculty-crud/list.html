@@ -1,1 +1,45 @@
-<div></div>
+<div ng-controller="adminFaculty" class="animated fadeIn"> 
+  <div class="card" ng-init=loadList()>
+    <div class="card-header">
+     	<button 
+    		ui-sref="appSimple.adminDashboard.facultyNew"
+    		class="btn btn-sm btn-success">
+    		<i class="fa fa-dot-circle-o"></i> Add New Faculty
+    	</button>
+    </div>
+    <div class="card-body">
+     	<div class="row">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="faculty in faculties">
+                <td>{{ faculty.id }}</td>
+                <td>{{ faculty.firstName }} </td>
+                <td>{{ faculty.lastName }} </td>
+                <td>{{ faculty.email }}</td>
+                <td>
+                 	<button 
+                		ui-sref="appSimple.adminDashboard.facultyEdit({id: faculty.id})" 
+                		class="btn btn-sm btn-primary">
+                		<i class="fa fa-dot-circle-o"></i> Edit
+                	</button>
+                	<button 
+	                	ng-click= "delete(faculty.id)"
+	                 	class="btn btn-sm btn-danger">
+	                 	<i class="fa fa-ban"></i> Delete
+                	</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+	    </div>
+    </div>
+</div>
