@@ -1,0 +1,50 @@
+<div ng-controller="adminCourse" class="animated fadeIn"> 
+  <div class="card" ng-init=loadList()>
+    <div class="card-header">
+      <button 
+        ui-sref="appSimple.adminDashboard.courseNew"
+        class="btn btn-sm btn-success">
+        <i class="fa fa-dot-circle-o"></i> Add New Course
+      </button>
+    </div>
+    <div class="card-body">
+      <div class="row">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Course Level</th>
+                <th>On Campus</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="course in courses">
+                <td>{{ course.id }} </td>
+                <td>{{ course.code }} </td>
+                <td>{{ course.name }} </td>
+                <td>{{ course.description }}</td>
+                <td>{{ course.course_level }}</td>
+                <td>{{course.on_campus == 1 ? "Yes" : "No"}}</td>
+                
+                <td>
+                  <button 
+                    ui-sref="appSimple.adminDashboard.courseEdit({id: course.id})"
+                    class="btn btn-sm btn-primary">
+                    <i class="fa fa-dot-circle-o"></i> Edit
+                  </button>
+                  <button 
+                    ng-click= "delete(course.id)"
+                    class="btn btn-sm btn-danger">
+                    <i class="fa fa-ban"></i> Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+</div>
