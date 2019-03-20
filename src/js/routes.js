@@ -222,18 +222,18 @@ angular
     }
   })
 
-    .state('appSimple.studentDashboard.schedule', {
-    url: '/register-courses',
-    templateUrl: 'views/student/schedule.html',
-    resolve: {
-      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
-        // you can lazy load controllers
-        return $ocLazyLoad.load({
-          files: ['js/controllers/student/student.js']
-        });
-      }]
-    }
-  })
+  .state('appSimple.studentDashboard.schedule', {
+  url: '/schedule',
+  templateUrl: 'views/student/schedule.html',
+  resolve: {
+    loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+      // you can lazy load controllers
+      return $ocLazyLoad.load({
+        files: ['js/controllers/student/student.js']
+      });
+    }]
+  }
+})
 
   //-----------------------------------------------------------------
   // MUMSched admin dashboard pages
@@ -509,7 +509,7 @@ angular
 
   .state('appSimple.facultyDashboard.blocksPreference', {
     url: '/block-preference',
-    templateUrl: 'views/faculty/teste.html',
+    templateUrl: 'views/faculty/block-preference.html',
     resolve: {
       loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
         // you can lazy load controllers
@@ -522,7 +522,7 @@ angular
 
   .state('appSimple.facultyDashboard.coursesPreference', {
     url: '/course-preference',
-    templateUrl: 'views/faculty/teste02.html',
+    templateUrl: 'views/faculty/course-preference.html',
     resolve: {
       loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
         // you can lazy load controllers
@@ -535,7 +535,7 @@ angular
 
   .state('appSimple.facultyDashboard.schedule', {
     url: '/schedule',
-    templateUrl: 'views/faculty/teste03.html',
+    templateUrl: 'views/faculty/schedule.html',
     resolve: {
       loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
         // you can lazy load controllers

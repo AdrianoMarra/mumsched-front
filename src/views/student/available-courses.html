@@ -1,6 +1,6 @@
 <div class="animated fadeIn" data-ng-init="coursesAvailable()"> 
 
-	<div class="card" style="margin-top: 30px;">
+	<div class="card">
 		<div class="card-header"> Courses available per block</div>
  		<div class="card-body">
 			<table class="table">
@@ -15,15 +15,15 @@
 				  </tr>
 				</thead>
 
-				<tbody ng-repeat="block in blocks">
+				<tbody ng-repeat="block in responseData">
 				  <tr><td colspan="6" class="block-name"><b>{{ block.description }}</b></td></tr>
 				  <tr ng-repeat="course in block.courses">
-				    <td>{{ course.courseCode }}</td>
-				    <td> {{ course.courseName }} </td>
-				    <td>{{ course.professor }}</td>
+				    <td>{{ course.code }}</td>
+				    <td> {{ course.name }} </td>
+				    <td>{{ course.facultyName }}</td>
 				    <td> {{ course.capacity }} </td>
 				    <td> {{ course.enrolled }} </td>
-				    <td> {{ course.seatsAvailable }} </td>
+				    <td> {{ course.seats_available }} </td>
 				  </tr>
 				</tbody>
 			</table>

@@ -1,7 +1,13 @@
-<div >
+<div data-ng-init="validateRegData()">
 
-	are you sure you want to register the section {{ sectionRegister }} dear student {{studentData.id}} ? 
+	<div class="card">
+		<div class="card-header"> Courses to register </div>
+ 		<div class="card-body">
+			Are you sure you want to register for the course <b>{{ courseRegisterInfo.courseRegister }}</b> on the block <b>"{{ courseRegisterInfo.blockRegister }}"</b>? 
+ 			<button class="btn btn-success" ng-click=confirmRegistration()>yes</button>
+			<button class="btn btn-danger" ng-click=cancelRegistration()>cancel</button>
+ 		</div>
+ 	</div>
 
-	<button ng-click=confirmRegistration()>yes</button>
-	<button ng-click=cancelRegistration()>cancel</button>
+
 </div>

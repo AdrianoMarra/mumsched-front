@@ -1,145 +1,93 @@
 //studentLogin.js
 angular
-.module('app')
-.controller('student', ['$scope', '$http', '$httpParamSerializer', '$state', function($scope, $http, $httpParamSerializer, $state) {
-  $scope.studentData = JSON.parse(localStorage.getItem('studentData'));
-  if($scope.studentData == undefined){
-    $state.go('appSimple.loginStudent')
-  }
+    .module('app')
+    .controller('student', ['$scope', '$http', '$httpParamSerializer', '$state', function($scope, $http, $httpParamSerializer, $state) {
+        
+        $scope.responseData = [];
+        $scope.studentData = JSON.parse(localStorage.getItem('studentData'));
+        if ($scope.studentData == undefined) {
+            $state.go('appSimple.loginStudent');
+        }
 
-  $scope.logout = function() {
-    localStorage.removeItem("studentData");
-    $state.go('appSimple.home')
-  }
+        $scope.logout = function() {
+            localStorage.removeItem("studentData");
+            $state.go('appSimple.home');
+        }
 
-  $scope.saveSection = function (section_id) {
-  	console.log(section_id)
-  	$scope.sectionRegister = section_id;
-  }
+        $scope.validateRegData = function() {
+            if ($scope.courseRegisterInfo.sectionRegister == undefined ||
+                $scope.courseRegisterInfo.courseRegister == undefined ||
+                $scope.courseRegisterInfo.blockRegister == undefined) {
+                // $state.go('appSimple.studentDashboard.registerToCourses');
+            }
+        }
 
-  $scope.confirmRegistration = function () {
-  	//call the api route saving it 
-  	$state.go('appSimple.studentDashboard.registerToCourses')
-  } 
+        $scope.submitRegistration = function(sectionId, courseName, block) {
+            $scope.courseRegisterInfo = { "sectionRegister": sectionId, "courseRegister": courseName, "blockRegister": block };
+        }
 
-  $scope.cancelRegistration = function () {
-  	// just go back to the previous page
-  	$state.go('appSimple.studentDashboard.registerToCourses')
-  }
+        $scope.confirmRegistration = function() {
 
-  $scope.blocks = [];
-  $scope.coursesAvailable = function () {
+            var params = { "id_section": $scope.courseRegisterInfo.sectionRegister, "id_student": $scope.studentData.id };
 
-	$scope.blocks = [{
-	"description": "April 2019",
-	"courses": [
-		{
-			"courseCode": "CS201",
-			"courseName": "MPP",
-			"professor": "Lerman",
-			"capacity": 30,
-			"enrolled": 23,
-			"seatsAvailable": 7
-		},
-		{
-			"courseCode": "CS201",
-			"courseName": "MPP",
-			"professor": "Lerman",
-			"capacity": 30,
-			"enrolled": 23,
-			"seatsAvailable": 7
-		},  		
-		{
-			"courseCode": "CS201",
-			"courseName": "MPP",
-			"professor": "Lerman",
-			"capacity": 30,
-			"enrolled": 23,
-			"seatsAvailable": 7
-		}
-	]
-	},
-	{
-	"description": "May 2019",
-	"courses": [
-		{
-			"courseCode": "CS201",
-			"courseName": "MPP",
-			"professor": "Lerman",
-			"capacity": 30,
-			"enrolled": 23,
-			"seatsAvailable": 7
-		},
-		{
-			"courseCode": "CS201",
-			"courseName": "MPP",
-			"professor": "Lerman",
-			"capacity": 30,
-			"enrolled": 23,
-			"seatsAvailable": 7
-		}
-	]
-	},
-	{
-	"description": "June 2019",
-	"courses": [
-		{
-			"courseCode": "CS201",
-			"courseName": "MPP",
-			"professor": "Lerman",
-			"capacity": 30,
-			"enrolled": 23,
-			"seatsAvailable": 7
-		},
-		{
-			"courseCode": "CS201",
-			"courseName": "MPP",
-			"professor": "Lerman",
-			"capacity": 30,
-			"enrolled": 23,
-			"seatsAvailable": 7
-		}
-	]
-	}];
-  }
+            $http.post('http://172.19.143.87:8000/api/registrations', params, 
+                {headers: {'Content-Type': 'application/json'}})
+                .then(function successCallback(response) {
+
+                    console.log(response.data);
+                    $state.go('appSimple.studentDashboard.registerToCourses');
 
 
-  $scope.coursesToRegister = function () {
+                }, function errorCallback(response) {
+                    console.log(response);
+                });
+        }
 
-	$scope.blocks = [{
-		"description": "April 2019",
-		"courses": [
-			{	
-				"section_id": "0",
-				"courseCode": "CS201",
-				"courseName": "MPP",
-				"professor": "Lerman",
-				"capacity": 30,
-				"enrolled": 23,
-				"seatsAvailable": 7
-			},
-			{
-				"section_id": "1",
-				"courseCode": "CS201",
-				"courseName": "MPP",
-				"professor": "Lerman",
-				"capacity": 30,
-				"enrolled": 23,
-				"seatsAvailable": 7,
-			},  		
-			{
-				"section_id": "2",
-				"courseCode": "CS201",
-				"courseName": "MPP",
-				"professor": "Lerman",
-				"capacity": 30,
-				"enrolled": 23,
-				"seatsAvailable": 7
-			}
-		]
-		}];
+        $scope.cancelRegistration = function() {
+            $state.go('appSimple.studentDashboard.registerToCourses');
+        }
 
-  }
+        $scope.coursesAvailable = function() {
 
+            $http.get('http://172.19.143.87:8000/api/students/' + $scope.studentData.id + '/courses_available',
+                // $httpParamSerializer(userInfo),
+                {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+                .then(function successCallback(response) {
 
-}]);
+                    $scope.responseData = response.data;
+                    console.log($scope.responseData);
+
+                }, function errorCallback(response) {
+                    console.log(response);
+                });
+        }
+
+        $scope.getCoursesToRegister = function() {
+
+            $http.get('http://172.19.143.87:8000/api/students/' + $scope.studentData.id + '/courses_available',
+                // $httpParamSerializer(userInfo),
+                {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+                .then(function successCallback(response) {
+
+                    $scope.responseData = response.data;
+
+                }, function errorCallback(response) {
+                    console.log(response);
+                });
+        }
+
+        $scope.studentSchedule = function() {
+            $http.get('http://172.19.143.87:8000/api/students/' + $scope.studentData.id + '/courses_available',
+                // $httpParamSerializer(userInfo),
+                {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+                .then(function successCallback(response) {
+
+                    $scope.responseData = response.data;
+                    console.log($scope.responseData);
+
+                }, function errorCallback(response) {
+                    console.log(response);
+                });
+        }
+
+    }]);

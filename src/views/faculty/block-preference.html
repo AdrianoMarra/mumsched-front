@@ -1,0 +1,20 @@
+<div class="animated fadeIn" data-ng-init=getBlockPreferences()>
+
+	<div class="card">
+		<div class="card-header"> What blocks would you like to teach? </div>
+ 		<div class="card-body">
+
+		    <div class="checkbox">
+		        <label ng-repeat="block in blocks" style="width: 100%">
+		            <input type="checkbox" name="{{block.block_description}}" ng-model="block.preference" ng-true-value="true" ng-false-value="false"> {{ block.block_description }}
+		        </label>
+		    </div>
+		    <br>
+		    <button class="btn btn-sm btn-primary" ng-click=submitBlockPreferences()>
+		        <i class="fa fa-dot-circle-o"></i> Submit
+		    </button>
+
+ 		</div>
+ 	</div>
+ </div>
+</div>
