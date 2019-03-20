@@ -1,7 +1,7 @@
-<div class="animated fadeIn" data-ng-init="coursesToRegister()"> 
+<div class="animated fadeIn" data-ng-init="getCoursesToRegister()"> 
 
-	<div class="card" style="margin-top: 30px;">
-		<div class="card-header"> Courses available per block</div>
+	<div class="card">
+		<div class="card-header"> Courses to register </div>
  		<div class="card-body">
 
 			<table class="table">
@@ -17,16 +17,16 @@
 				  </tr>
 				</thead>
 				<form>
-					<tbody ng-repeat="block in blocks">
+					<tbody ng-repeat="block in responseData">
 					  	<tr><td colspan="6" class="block-name"><b>{{ block.description }}</b></td></tr>
 						  <tr ng-repeat="course in block.courses">
-						    <td>{{ course.courseCode }}</td>
-						    <td> {{ course.courseName }} </td>
-						    <td>{{ course.professor }}</td>
+						    <td>{{ course.code }}</td>
+						    <td> {{ course.name }} </td>
+						    <td>{{ course.facultyName }}</td>
 						    <td> {{ course.capacity }} </td>
 						    <td> {{ course.enrolled }} </td>
-						    <td> {{ course.seatsAvailable }} </td>
-						    <td> <button ui-sref="appSimple.studentDashboard.registerConfirm" ng-click=saveSection(course.section_id)> Register </button></td>
+						    <td> {{ course.seats_available }} </td>
+						    <td> <button ui-sref="appSimple.studentDashboard.registerConfirm" ng-click="submitRegistration(course.id_section, course.name, block.description)"> Register </button></td>
 						  </tr>
 					</tbody>
 				</form>

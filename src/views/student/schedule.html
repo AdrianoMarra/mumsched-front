@@ -1,1 +1,29 @@
-<div class="animated fadeIn"> courses schedule shown here! </div>
+<div class="animated fadeIn" data-ng-init="studentSchedule()"> 
+
+	<div class="card">
+		<div class="card-header"> Your schedule </div>
+ 		<div class="card-body">
+			<table class="table">
+				<thead>
+				  <tr>
+				    <th>Block description</th>
+				    <th>Course Code</th>
+				    <th>Course Name</th>
+				    <th>Professor</th>
+				    <th>Start date</th>
+				  </tr>
+				</thead>
+
+				<tbody>
+					<tr ng-repeat="course in responseData">
+						<td> {{ course.description }} </td>
+						<td> {{ course.course_code }} </td>
+						<td> {{ course.course_name }} </td>
+						<td> {{ course.professor }} </td>
+						<td> {{ course.start_date }} </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+ </div>
