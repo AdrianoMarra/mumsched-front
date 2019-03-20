@@ -36,6 +36,12 @@
               ng-model="entry">
             </select>
           </div>
+          <div class="checkbox" ng-show="isUpdate">
+            <label>Blocks </label>
+            <label ng-repeat="block in blocks" style="width: 100%">
+                <input type="checkbox" name="{{block.description}}" ng-model="block.isAssigned" ng-true-value="true" ng-false-value="false"> {{ block.description }}
+            </label>
+        </div>
         </div>
         <div class="card-footer">
          	<button 

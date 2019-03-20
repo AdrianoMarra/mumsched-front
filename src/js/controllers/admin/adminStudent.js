@@ -30,6 +30,13 @@ angular
         $scope.entry = $scope.entries.find(o => o.id == $scope.student.id_entry);
       }, function errorCallback(response) {
     });
+
+    $http.get('http://172.19.143.87:8000/api/students/' + paramValue + '/all_blocks',
+      {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+      .then(function successCallback(response) {
+        $scope.blocks = response.data;
+      }, function errorCallback(response) {
+    });
   } else {
     $scope.isUpdate = false;
   }
@@ -48,6 +55,23 @@ angular
   };
 
   $scope.update = function() {
+
+    var blocksAssigned = [];
+
+    //assign blocks
+    angular.forEach($scope.blocks, function(block, key) {
+      if (block.isAssigned)
+          blocksAssigned.push(block.id);
+    });
+
+    var params = {"id_blocks": blocksAssigned};
+    $http.put('http://172.19.143.87:8000/api/students/'+ paramValue +'/all_blocks', params,
+    {headers: {'Content-Type': 'application/json'}})
+    .then(function successCallback(response) {
+    }, function errorCallback(response) {
+    });
+
+    //update info
     $scope.student.id_entry = $scope.entry.id;
     $http.put('http://172.19.143.87:8000/api/students/' + paramValue, $scope.student,
     {headers: {'Content-Type': 'application/json'}})
