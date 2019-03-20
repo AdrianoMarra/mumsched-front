@@ -1,93 +1,109 @@
-<header class="app-header navbar ng-scope">
-  <button class="navbar-toggler mobile-sidebar-toggler d-lg-none" type="button">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" href="#!/home"></a>
-  <ul class="nav navbar-nav d-md-down-none">
-    <li class="nav-item px-3">
-      <a class="nav-link" href="#!/faculty/login">Admin1</a>
-    </li>
-  </ul>
-</header>
-
-<div class="animated fadeIn">
-  <div ng-app="app" class="app flex-row align-items-center" ng-controller="blockController">
-    <div class="container">
-      <div class="row justify-content-center">
-    	<div class="col-sm-6">
-	      <div class="card">
-	        <div class="card-header">
-	          <strong>Block</strong>
-	        </div>
-	        <div class="card-body">
-	          Start Date 
-	          <div class="row">
-	            <div class="form-group col-sm-4">
-	              <label for="sd_month">Month</label>
-	              <select class="form-control" ng-model="sd_month">
-	                <option ng-repeat="i in counter(12) track by $index"><span>{{$index+1}}</span></option>
-	              </select>
-	            </div>
-	            <div class="form-group col-sm-4">
-	              <label for="sd_month">Day</label>
-	              <select class="form-control" ng-model="sd_day">
-	                <option ng-repeat="i in counter(30) track by $index"><span>{{$index+1}}</span></option>
-	              </select>
-	            </div>
-	            <div class="form-group col-sm-4">
-	              <label for="sd_year">Year</label>
-	              <select class="form-control" ng-model="sd_year">
-	                <option ng-repeat="i in counter(10) track by $index"><span>{{$index+2015}}</span></option>
-	              </select>
-	            </div>
-	          </div>
-	          End Date 
-		      <div class="row">
-	            <div class="form-group col-sm-4">
-	              <label for="ed_month">Month</label>
-	              <select class="form-control" ng-model="ed_month">
-	                <option ng-repeat="i in counter(12) track by $index"><span>{{$index+1}}</span></option>
-	              </select>
-	            </div>
-	            <div class="form-group col-sm-4">
-	              <label for="ed_month">Day</label>
-	              <select class="form-control" ng-model="ed_day">
-	                <option ng-repeat="i in counter(30) track by $index"><span>{{$index+1}}</span></option>
-	              </select>
-	            </div>
-	            <div class="form-group col-sm-4">
-	              <label for="ed_year">Year</label>
-	              <select class="form-control" ng-model="ed_year">
-	                <option ng-repeat="i in counter(10) track by $index"><span>{{$index+2015}}</span></option>
-	              </select>
-	            </div>
-	          </div>
-	          <div class="form-group">
-	            <label for="description">Description</label>
-	            <input type="text" class="form-control" ng-model="description" placeholder="Description">
-	          </div>
-	          <div class="form-group row">
-	              <label class="col-md-3 col-form-label">Block Type</label>
-	              <div class="col-md-9 col-form-label">
-	                <div class="form-check form-check-inline mr-1">
-	                  <input class="form-check-input" type="radio" id="inline-radio1" value="option1" name="inline-radios">
-	                  <label class="form-check-label" for="inline-radio1">On Campus</label>
-	                </div>
-	                <div class="form-check form-check-inline mr-1">
-	                  <input class="form-check-input" type="radio" id="inline-radio2" value="option2" name="inline-radios">
-	                  <label class="form-check-label" for="inline-radio2">Off Campus</label>
-	                </div>
-	              </div>
-	            </div>
-	         </div>
-	        <div class="card-footer">
-	         	<button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
-	         	<button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
-	        </div>
-	        </div>
-	      </div>
-	    </div>
-      </div>
+<div class="animated fadeIn" ng-controller="adminBlock">
+  <div class="card">
+    <div class="card-header">
+      <strong>Block</strong>
     </div>
-  </div>
+    <div class="card-body">
+    	<div class="row form-group col-sm-4">
+      		<label>Start Date</label>
+      	</div>
+      	<div class="row">
+	      	<div class="form-group col-sm-4">
+	          <label for="ccyear">Year</label>
+	          <select 
+	        	class="form-control"
+	        	ng-options="year as year.label for year in startYears track by year.id" 
+	        	ng-model="startYear">
+	          </select>
+	        </div>
+	        <div class="form-group col-sm-4">
+	          <label for="ccmonth">Month</label>
+	          <select 
+	        	class="form-control"
+	        	ng-options="month as month.label for month in startMonths track by month.id" 
+	        	ng-model="startMonth">
+	          </select>
+	        </div>
+	        <div class="form-group col-sm-4">
+	          <label for="ccmonth">Day</label>
+	          <select 
+	        	class="form-control"
+	        	ng-options="day as day.label for day in startDays track by day.id" 
+	        	ng-model="startDay">
+	          </select>
+	        </div>
+	     </div>
+	     <div class="row form-group col-sm-4">
+      		<label>End Date</label>
+      	</div>
+      	<div class="row">
+	      	<div class="form-group col-sm-4">
+	          <label for="ccyear">Year</label>
+	          <select 
+	        	class="form-control"
+	        	ng-options="year as year.label for year in endYears track by year.id" 
+	        	ng-model="endYear">
+	          </select>
+	        </div>
+	        <div class="form-group col-sm-4">
+	          <label for="ccmonth">Month</label>
+	          <select 
+	        	class="form-control"
+	        	ng-options="month as month.label for month in endMonths track by month.id" 
+	        	ng-model="endMonth">
+	          </select>
+	        </div>
+	        <div class="form-group col-sm-4">
+	          <label for="ccmonth">Day</label>
+	          <select 
+	        	class="form-control"
+	        	ng-options="day as day.label for day in endDays track by day.id" 
+	        	ng-model="endDay">
+	          </select>
+	        </div>
+	     </div>
+	     <div class="form-group">
+	        <label for="description">Description</label>
+	        <input type="text" class="form-control" ng-model="block.description" placeholder="Description">
+	     </div>
+	     <div class="form-group row">
+		      <label class="col-md-1 col-form-label">On Campus</label>
+		      <div class="col-md-9 col-form-label">
+		        <div class="form-check form-check-inline mr-3">
+		          <input type="radio" class="form-check-input" ng-model="block.on_campus" ng-value="true">
+		          <label class="form-check-label">Yes</label>
+		        </div>
+		        <div class="form-check form-check-inline mr-1">
+		          <input type="radio" class="form-check-input" ng-model="block.on_campus" ng-value="false">
+		          <label class="form-check-label">No</label>
+		        </div>
+		      </div>
+		</div>
+    </div>
+    <div class="card-footer">
+         	<button 
+	         	type="submit" 
+	         	ng-click= "create()" 
+	         	class="btn btn-sm btn-primary" 
+	         	ng-hide="isUpdate">
+	          	<i class="fa fa-dot-circle-o"></i> 
+	          	Submit
+        	</button>
+         	<button 
+	         	type="submit" 
+	         	ng-click= "update()" 
+	         	class="btn btn-sm btn-primary" 
+	         	ng-hide="!isUpdate">
+	         	<i class="fa fa-dot-circle-o"></i>
+	         	Update
+        	</button>
+        	<button 
+	        	type="reset" 
+	        	ng-click= "cancel()"
+	        	class="btn btn-sm btn-danger">
+	        	<i class="fa fa-ban"></i> 
+	        	Cancel
+       		</button>
+        </div>
+    </div>
 </div>
