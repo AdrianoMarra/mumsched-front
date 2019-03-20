@@ -6,7 +6,7 @@
 
 		    <div class="checkbox">
 		        <label ng-repeat="block in blocks" style="width: 100%">
-		            <input type="checkbox" name="{{block.block_description}}" ng-model="block.preference" ng-true-value="true" ng-false-value="false"> {{ block.block_description }}
+		            <input type="checkbox" name="{{block.description}}" ng-model="block.isPreference" ng-true-value="true" ng-false-value="false"> {{ block.description }}
 		        </label>
 		    </div>
 		    <br>
