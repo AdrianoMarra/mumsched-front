@@ -55,6 +55,19 @@ angular
     $scope.isUpdate = false;
   }
 
+  $scope.getFaculty = function() {
+  	if ($scope.block.id && $scope.course.id) {
+	  	$http.get('http://172.19.143.87:8000/api/sections/' + $scope.block.id + '/' + $scope.course.id + '/facultypreferences',
+		    {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+		    .then(function successCallback(response) {
+		      $scope.faculties = response.data;
+		    }, function errorCallback(response) {
+		  });
+	} else {
+		$scope.faculties ={};
+	}
+  };
+
   $scope.create = function() {
     $scope.section.id_block = $scope.block.id;
     $scope.section.id_course = $scope.course.id;

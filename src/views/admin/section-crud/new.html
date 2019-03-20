@@ -23,6 +23,7 @@
           <div class="form-group">
             <label for="registration_number">Faculty</label>
             <select 
+              ng-click="getFaculty()"
               class="form-control col-md-3"
               ng-options="faculty as faculty.firstName +' '+ faculty.lastName for faculty in faculties track by faculty.id" 
               ng-model="faculty">
