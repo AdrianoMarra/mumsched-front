@@ -34,9 +34,7 @@ angular
                 {headers: {'Content-Type': 'application/json'}})
                 .then(function successCallback(response) {
 
-                    console.log(response.data);
-                    $state.go('appSimple.studentDashboard.registerToCourses');
-
+                    $state.go('appSimple.studentDashboard.schedule');
 
                 }, function errorCallback(response) {
                     console.log(response);
