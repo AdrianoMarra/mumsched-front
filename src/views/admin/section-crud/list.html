@@ -1,0 +1,62 @@
+<div ng-controller="adminSection" class="animated fadeIn"> 
+  <div class="card" ng-init=loadList()>
+    <div class="card-header">
+     	<button 
+    		ui-sref="appSimple.adminDashboard.sectionNew"
+    		class="btn btn-sm btn-success">
+    		<i class="fa fa-dot-circle-o"></i> Add New Section
+    	</button>
+    </div>
+    <div class="card-body">
+     	<div class="row">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Block</th>
+                <th>Course Name</th>
+                <th>Faculty Name</th>
+                <th>Capacity</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="section in sections">
+                <td>{{ section.id }}</td>
+                <td>
+                	<div ng-repeat="block in blocks">
+                		<span ng-show="block.id == section.id_block">{{ block.description }}</span>
+                	</div>
+                </td>
+                <td>
+                	<div ng-repeat="course in courses">
+                		<span ng-show="course.id == section.id_course">{{ course.name }}</span>
+                	</div>
+                </td>
+                <td>
+                	<div ng-repeat="faculty in faculties">
+                		<span ng-show="faculty.id == section.id_faculty">
+                			{{ faculty.firstName }} {{faculty.lastName}}
+                		</span>
+                	</div>
+                </td>
+                <td>{{ section.capacity }}</td>
+                <td>
+                 	<button 
+                		ui-sref="appSimple.adminDashboard.sectionEdit({id: section.id})" 
+                		class="btn btn-sm btn-primary">
+                		<i class="fa fa-dot-circle-o"></i> Edit
+                	</button>
+                	<button 
+	                	ng-click= "delete(section.id)"
+	                 	class="btn btn-sm btn-danger">
+	                 	<i class="fa fa-ban"></i> Delete
+                	</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+	    </div>
+    </div>
+</div>
+
