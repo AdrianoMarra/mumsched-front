@@ -18,8 +18,8 @@ angular
 
     $http.post(
       'http://172.19.143.87:8000/api/login/faculty',
-      $httpParamSerializer(userInfo),
-      {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+      userInfo,
+      {headers: {'Content-Type': 'application/json'}})
       .then(function successCallback(response) {
 
         if (response.data.response == false) {

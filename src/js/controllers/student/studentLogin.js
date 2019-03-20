@@ -15,10 +15,10 @@ angular
   }
 
   function validateLogin(userInfo) {
-
+    
     $http.post(
       'http://172.19.143.87:8000/api/login/student',
-      $httpParamSerializer(userInfo),
+      userInfo,
       {headers: {'Content-Type': 'application/json'}})
       .then(function successCallback(response) {
 
