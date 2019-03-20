@@ -411,6 +411,46 @@ angular
     }
   })
 
+  //------------------------ Block crud --------------------------
+  .state('appSimple.adminDashboard.blocks', {
+    url: '/blocks',
+    templateUrl: 'views/admin/block-crud/list.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/admin/adminBlock.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.adminDashboard.blockNew', {
+    url: '/blocks/new',
+    templateUrl: 'views/admin/block-crud/new.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/admin/adminBlock.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.adminDashboard.blockEdit', {
+    url: '/blocks/edit?id',
+    templateUrl: 'views/admin/block-crud/new.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/admin/adminBlock.js']
+        });
+      }]
+    }
+  })
+
   //------------------------ Admin crud --------------------------
   .state('appSimple.adminDashboard.admins', {
     url: '/admins',

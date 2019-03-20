@@ -1,0 +1,47 @@
+<div ng-controller="adminBlock" class="animated fadeIn"> 
+  <div class="card" ng-init=loadList()>
+    <div class="card-header">
+     	<button 
+        ui-sref="appSimple.adminDashboard.blockNew"
+    		class="btn btn-sm btn-success">
+    		<i class="fa fa-dot-circle-o"></i> Add New Block
+    	</button>
+    </div>
+    <div class="card-body">
+     	<div class="row">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Description</th>
+                <th>On Campus</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="block in blocks">
+                <td>{{ block.id }} </td>
+                <td>{{ block.start_date| date: 'yyyy-MM-dd'}} </td>
+                <td>{{ block.end_date| date: 'yyyy-MM-dd'}} </td>
+                <td>{{ block.description }}</td>
+                <td>{{ block.on_campus == 1 ? "Yes" : "No"}}</td>
+                <td>
+                 	<button 
+                    ui-sref="appSimple.adminDashboard.blockEdit({id: block.id})"
+                		class="btn btn-sm btn-primary">
+                		<i class="fa fa-dot-circle-o"></i> Edit
+                	</button>
+                	<button 
+	                	ng-click= "delete(block.id)"
+	                 	class="btn btn-sm btn-danger">
+	                 	<i class="fa fa-ban"></i> Delete
+                	</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+	    </div>
+    </div>
+</div>

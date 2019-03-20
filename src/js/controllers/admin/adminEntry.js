@@ -9,7 +9,6 @@ angular
     $state.go('appSimple.loginAdmin')
   }
 
-  $scope.counter = Array;
   $scope.isUpdate = false;
   $scope.entry = {};
   var paramValue = $location.search().id;
