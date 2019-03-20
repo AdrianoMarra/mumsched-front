@@ -81,4 +81,18 @@ angular
     });
   }
 
+  $scope.professorSchedule = function() {
+
+      $http.get('http://172.19.143.87:8000/api/faculty/'+$scope.facultyData.id+'/schedules',
+      // $httpParamSerializer(userInfo),
+      {headers: {'Content-Type': 'application/json'}})
+      .then(function successCallback(response) {
+
+          $scope.schedule = response.data;
+
+      }, function errorCallback(response) {
+          console.log(response);
+      });
+  };
+
 }]);
