@@ -19,6 +19,7 @@
                 <th>Track Type</th>
                 <th>Email</th>
                 <th>Registration Number</th>
+                <th>Entry</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -31,6 +32,11 @@
                 <td>{{ student.track_type}}</td>
                 <td>{{ student.email }}</td>
                 <td>{{ student.registration_number }}</td>
+                <td>
+                  <div ng-repeat="entry in entries">
+                    <span ng-show="entry.id == student.id_entry">{{ entry.description }}</span>
+                  </div>
+                </td>
                 <td>
                  	<button 
                 		ui-sref="appSimple.adminDashboard.studentEdit({id: student.id})" 

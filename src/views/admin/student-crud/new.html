@@ -32,7 +32,7 @@
             <label for="registration_number">Entry </label>
             <select 
               class="form-control col-md-3"
-              ng-options="entry as entry.date for entry in entries track by entry.id" 
+              ng-options="entry as entry.description for entry in entries track by entry.id" 
               ng-model="entry">
             </select>
           </div>

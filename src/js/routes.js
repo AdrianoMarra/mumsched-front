@@ -490,6 +490,47 @@ angular
       }]
     }
   })
+  //------------------------ Section crud --------------------------
+  .state('appSimple.adminDashboard.sections', {
+    url: '/sections',
+    templateUrl: 'views/admin/section-crud/list.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/admin/adminSection.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.adminDashboard.sectionNew', {
+    url: '/sections/new',
+    templateUrl: 'views/admin/section-crud/new.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/admin/adminSection.js']
+        });
+      }]
+    }
+  })
+
+  .state('appSimple.adminDashboard.sectionEdit', {
+    url: '/sections/edit?id',
+    templateUrl: 'views/admin/section-crud/new.html',
+    resolve: {
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: ['js/controllers/admin/adminSection.js']
+        });
+      }]
+    }
+  })
+
+
 
   //-----------------------------------------------------------------
   // MUMSched faculty dashboard pages
