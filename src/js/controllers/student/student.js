@@ -34,9 +34,7 @@ angular
                 {headers: {'Content-Type': 'application/json'}})
                 .then(function successCallback(response) {
 
-                    console.log(response.data);
-                    $state.go('appSimple.studentDashboard.registerToCourses');
-
+                    $state.go('appSimple.studentDashboard.schedule');
 
                 }, function errorCallback(response) {
                     console.log(response);
@@ -64,7 +62,7 @@ angular
 
         $scope.getCoursesToRegister = function() {
 
-            $http.get('http://172.19.143.87:8000/api/students/' + $scope.studentData.id + '/courses_available',
+            $http.get('http://172.19.143.87:8000/api/students/' + $scope.studentData.id + '/registration',
                 // $httpParamSerializer(userInfo),
                 {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
                 .then(function successCallback(response) {
@@ -77,9 +75,9 @@ angular
         }
 
         $scope.studentSchedule = function() {
-            $http.get('http://172.19.143.87:8000/api/students/' + $scope.studentData.id + '/courses_available',
+            $http.get('http://172.19.143.87:8000/api/students/' + $scope.studentData.id + '/schedule',
                 // $httpParamSerializer(userInfo),
-                {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+                {headers: {'Content-Type': 'application/json'}})
                 .then(function successCallback(response) {
 
                     $scope.responseData = response.data;
