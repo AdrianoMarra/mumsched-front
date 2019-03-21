@@ -22,7 +22,7 @@
             </thead>
             <tbody>
               <tr ng-repeat="section in sections">
-                <td>{{ section.id }}</td>
+                <td>{{ $index+1 }}</td>
                 <td>
                 	<div ng-repeat="block in blocks">
                 		<span ng-show="block.id == section.id_block">{{ block.description }}</span>

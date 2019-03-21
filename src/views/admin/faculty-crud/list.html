@@ -21,7 +21,7 @@
             </thead>
             <tbody>
               <tr ng-repeat="faculty in faculties">
-                <td>{{ faculty.id }}</td>
+                <td>{{ $index+1 }}</td>
                 <td>{{ faculty.firstName }} </td>
                 <td>{{ faculty.lastName }} </td>
                 <td>{{ faculty.email }}</td>
