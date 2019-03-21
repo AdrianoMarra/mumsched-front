@@ -20,8 +20,8 @@
             </thead>
             <tbody>
               <tr ng-repeat="entry in entries">
-                <td>{{ entry.id }} </td>
-                <td>{{ entry.date| date: 'yyyy-MM-dd'}} </td>
+                <td>{{ $index+1 }} </td>
+                <td>{{ entry.date | limitTo: 10 }} </td>
                 <td>{{ entry.description }}</td>
                 <td>
                  	<button 

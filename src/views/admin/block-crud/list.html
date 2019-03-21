@@ -22,9 +22,9 @@
             </thead>
             <tbody>
               <tr ng-repeat="block in blocks">
-                <td>{{ block.id }} </td>
-                <td>{{ block.start_date| date: 'yyyy-MM-dd'}} </td>
-                <td>{{ block.end_date| date: 'yyyy-MM-dd'}} </td>
+                <td>{{ $index+1 }} </td>
+                <td>{{ block.start_date| limitTo: 10}} </td>
+                <td>{{ block.end_date| limitTo: 10}} </td>
                 <td>{{ block.description }}</td>
                 <td>{{ block.on_campus == 1 ? "Yes" : "No"}}</td>
                 <td>
