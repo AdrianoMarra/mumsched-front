@@ -1,4 +1,4 @@
-# mumsched-front
+# MumSched
 
 Our MUMSched project includes two different parts, a restful API (https://github.com/manelmiq/mumsched-api.git) and a front-end client (https://github.com/AdrianoMarra/mumsched-front.git) that reads from it.
 
