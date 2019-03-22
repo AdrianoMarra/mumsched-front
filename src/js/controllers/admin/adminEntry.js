@@ -40,7 +40,7 @@ angular
 
   if(paramValue) {
     $scope.isUpdate = true;
-    $http.get('http://172.19.143.87:8000/api/entries/' + paramValue,
+    $http.get('http://localhost:8000/api/entries/' + paramValue,
       {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
       .then(function successCallback(response) {
         $scope.entry = response.data;
@@ -59,7 +59,7 @@ angular
     var strDate = $scope.year.id + "-" + $scope.month.id + "-" + $scope.day.id;
     $scope.entry.date = $filter('date')(strDate, "yyyy-MM-dd");
 
-    $http.post('http://172.19.143.87:8000/api/entries', $scope.entry,
+    $http.post('http://localhost:8000/api/entries', $scope.entry,
     {headers: {'Content-Type': 'application/json'}})
     .then(function successCallback(response) {
       $location.path( "/admin/dashboard/entries" );
@@ -71,7 +71,7 @@ angular
     var strDate = $scope.year.id + "-" + $scope.month.id + "-" + $scope.day.id;
     $scope.entry.date = $filter('date')(strDate, "yyyy-MM-dd");
 
-    $http.put('http://172.19.143.87:8000/api/entries/' + paramValue, $scope.entry,
+    $http.put('http://localhost:8000/api/entries/' + paramValue, $scope.entry,
     {headers: {'Content-Type': 'application/json'}})
     .then(function successCallback(response) {
       $location.path( "/admin/dashboard/entries" );
@@ -84,7 +84,7 @@ angular
   };
 
   $scope.loadList = function (){
-    $http.get('http://172.19.143.87:8000/api/entries',
+    $http.get('http://localhost:8000/api/entries',
     {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
     .then(function successCallback(response) {
       $scope.entries = response.data;
@@ -93,7 +93,7 @@ angular
   };
 
   $scope.delete = function(id) {
-    $http.delete('http://172.19.143.87:8000/api/entries/' + id,
+    $http.delete('http://localhost:8000/api/entries/' + id,
     {headers: {'Content-Type': 'application/json'}})
     .then(function successCallback(response) {
       $state.reload();

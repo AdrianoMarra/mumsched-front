@@ -13,7 +13,7 @@ angular
   }
 
   $scope.getBlockPreferences = function() {
-      $http.get('http://172.19.143.87:8000/api/faculty/'+$scope.facultyData.id+'/blockpreferences',
+      $http.get('http://localhost:8000/api/faculty/'+$scope.facultyData.id+'/blockpreferences',
       // $httpParamSerializer(userInfo),
       {headers: {'Content-Type': 'application/json'}})
       .then(function successCallback(response) {
@@ -36,7 +36,7 @@ angular
 
     var params = {"blocks_id": blockIdsPreferences};
 
-    $http.put('http://172.19.143.87:8000/api/faculty/'+$scope.facultyData.id+'/blockpreferences',
+    $http.put('http://localhost:8000/api/faculty/'+$scope.facultyData.id+'/blockpreferences',
     // $httpParamSerializer(userInfo),
     params,
     {headers: {'Content-Type': 'application/json'}})
@@ -48,7 +48,7 @@ angular
   }
 
   $scope.getCoursePreferences = function() {
-      $http.get('http://172.19.143.87:8000/api/faculty/'+$scope.facultyData.id+'/coursepreferences',
+      $http.get('http://localhost:8000/api/faculty/'+$scope.facultyData.id+'/coursepreferences',
       // $httpParamSerializer(userInfo),
       {headers: {'Content-Type': 'application/json'}})
       .then(function successCallback(response) {
@@ -70,7 +70,7 @@ angular
 
     var params = {"courses_id": courseIdsPreferences};
 
-    $http.put('http://172.19.143.87:8000/api/faculty/'+$scope.facultyData.id+'/coursepreferences',
+    $http.put('http://localhost:8000/api/faculty/'+$scope.facultyData.id+'/coursepreferences',
     // $httpParamSerializer(userInfo),
     params,
     {headers: {'Content-Type': 'application/json'}})
@@ -83,7 +83,7 @@ angular
 
   $scope.professorSchedule = function() {
 
-      $http.get('http://172.19.143.87:8000/api/faculty/'+$scope.facultyData.id+'/schedules',
+      $http.get('http://localhost:8000/api/faculty/'+$scope.facultyData.id+'/schedules',
       // $httpParamSerializer(userInfo),
       {headers: {'Content-Type': 'application/json'}})
       .then(function successCallback(response) {

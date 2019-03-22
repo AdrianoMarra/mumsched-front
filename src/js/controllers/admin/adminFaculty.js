@@ -15,7 +15,7 @@ angular
 
   if(paramValue) {
     $scope.isUpdate = true;
-    $http.get('http://172.19.143.87:8000/api/faculty/' + paramValue,
+    $http.get('http://localhost:8000/api/faculty/' + paramValue,
       {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
       .then(function successCallback(response) {
         $scope.faculty = response.data;
@@ -26,7 +26,7 @@ angular
   }
 
   $scope.loadList = function (){
-    $http.get('http://172.19.143.87:8000/api/faculty',
+    $http.get('http://localhost:8000/api/faculty',
     {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
     .then(function successCallback(response) {
       $scope.faculties = response.data;
@@ -35,7 +35,7 @@ angular
   };
 
   $scope.delete = function(id) {
-    $http.delete('http://172.19.143.87:8000/api/faculty/' + id,
+    $http.delete('http://localhost:8000/api/faculty/' + id,
     {headers: {'Content-Type': 'application/json'}})
     .then(function successCallback(response) {
       $state.reload();
@@ -48,7 +48,7 @@ angular
   };
   $scope.create = function() {
   	$scope.faculty.password = "12345"; //default
-    $http.post('http://172.19.143.87:8000/api/faculty', $scope.faculty,
+    $http.post('http://localhost:8000/api/faculty', $scope.faculty,
     {headers: {'Content-Type': 'application/json'}})
     .then(function successCallback(response) {
       $location.path( "/admin/dashboard/faculties" );
@@ -57,7 +57,7 @@ angular
   };
 
   $scope.update = function() {
-    $http.put('http://172.19.143.87:8000/api/faculty/' + paramValue, $scope.faculty,
+    $http.put('http://localhost:8000/api/faculty/' + paramValue, $scope.faculty,
     {headers: {'Content-Type': 'application/json'}})
     .then(function successCallback(response) {
       $location.path( "/admin/dashboard/faculties" );

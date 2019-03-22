@@ -15,7 +15,7 @@ angular
 
   $scope.block = {};
   $scope.blocks = {};
-  $http.get('http://172.19.143.87:8000/api/blocks',
+  $http.get('http://localhost:8000/api/blocks',
     {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
     .then(function successCallback(response) {
       $scope.blocks = response.data;
@@ -24,7 +24,7 @@ angular
 
   $scope.course = {};
   $scope.courses = {};
-  $http.get('http://172.19.143.87:8000/api/courses',
+  $http.get('http://localhost:8000/api/courses',
     {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
     .then(function successCallback(response) {
       $scope.courses = response.data;
@@ -33,7 +33,7 @@ angular
 
   $scope.faculty = {};
   $scope.faculties = {};
-  $http.get('http://172.19.143.87:8000/api/faculty',
+  $http.get('http://localhost:8000/api/faculty',
     {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
     .then(function successCallback(response) {
       $scope.faculties = response.data;
@@ -42,7 +42,7 @@ angular
 
   if(paramValue) {
     $scope.isUpdate = true;
-    $http.get('http://172.19.143.87:8000/api/sections/' + paramValue,
+    $http.get('http://localhost:8000/api/sections/' + paramValue,
       {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
       .then(function successCallback(response) {
         $scope.section = response.data;
@@ -57,7 +57,7 @@ angular
 
   $scope.getFaculty = function() {
   	if ($scope.block.id && $scope.course.id) {
-	  	$http.get('http://172.19.143.87:8000/api/sections/' + $scope.block.id + '/' + $scope.course.id + '/facultypreferences',
+	  	$http.get('http://localhost:8000/api/sections/' + $scope.block.id + '/' + $scope.course.id + '/facultypreferences',
 		    {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
 		    .then(function successCallback(response) {
 		      $scope.faculties = response.data;
@@ -73,7 +73,7 @@ angular
     $scope.section.id_course = $scope.course.id;
     $scope.section.id_faculty = $scope.faculty.id;
 
-    $http.post('http://172.19.143.87:8000/api/sections', $scope.section,
+    $http.post('http://localhost:8000/api/sections', $scope.section,
     {headers: {'Content-Type': 'application/json'}})
     .then(function successCallback(response) {
       $location.path( "/admin/dashboard/sections" );
@@ -86,7 +86,7 @@ angular
     $scope.section.id_course = $scope.course.id;
     $scope.section.id_faculty = $scope.faculty.id;
 
-    $http.put('http://172.19.143.87:8000/api/sections/' + paramValue, $scope.section,
+    $http.put('http://localhost:8000/api/sections/' + paramValue, $scope.section,
     {headers: {'Content-Type': 'application/json'}})
     .then(function successCallback(response) {
       $location.path( "/admin/dashboard/sections" );
@@ -95,7 +95,7 @@ angular
   };
 
   $scope.loadList = function (){
-    $http.get('http://172.19.143.87:8000/api/sections',
+    $http.get('http://localhost:8000/api/sections',
     {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
     .then(function successCallback(response) {
       $scope.sections = response.data;
@@ -108,7 +108,7 @@ angular
   };
 
   $scope.delete = function(id) {
-    $http.delete('http://172.19.143.87:8000/api/sections/' + id,
+    $http.delete('http://localhost:8000/api/sections/' + id,
     {headers: {'Content-Type': 'application/json'}})
     .then(function successCallback(response) {
       $state.reload();
