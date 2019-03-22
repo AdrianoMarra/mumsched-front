@@ -1,7 +1,6 @@
 # mumsched-front
 
-Our project includes two different parts, a restful API and a front-end client that reads from it. 
-This is the front-end and the back-end project can be found at https://github.com/manelmiq/mumsched-api.git
+Our project includes two different parts, a restful API and a front-end client that reads from it.
 
 The technologies used in this project are: 
 
@@ -36,5 +35,6 @@ The technologies used in this project are:
     1) Download the file mumsched-front.zip for API code.
     2) Unzip the folder
     3) Access the folder via terminal.
+    5) Run the command "npm install gulp"
     4) Run the command "gulp serve" from your terminal (If you don't have Gulp installed: https://libraries.io/npm/gulp/3.9.1)
-    5) You can access the user interface at: http://localhost:3000
+    5) That is it! Now you can access the user interface at: http://localhost:3000
