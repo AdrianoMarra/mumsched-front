@@ -29,7 +29,7 @@ The technologies used in this project are:
             DB_USERNAME={your_db_username}
             DB_PASSWORD={your_db_password}
     7) Run the command "php artisan serve" from your terminal.
-    8) You now can access the API at: http://localhost:8000 
+    8) Now you can access the API at: http://localhost:8000 
     
     ## Installing the front-end project:
     1) Download the file mumsched-front.zip for API code.
