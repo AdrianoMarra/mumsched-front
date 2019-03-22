@@ -30,7 +30,7 @@ angular
 
             var params = { "id_section": $scope.courseRegisterInfo.sectionRegister, "id_student": $scope.studentData.id };
 
-            $http.post('http://172.19.143.87:8000/api/registrations', params, 
+            $http.post('http://localhost:8000/api/registrations', params, 
                 {headers: {'Content-Type': 'application/json'}})
                 .then(function successCallback(response) {
 
@@ -47,7 +47,7 @@ angular
 
         $scope.coursesAvailable = function() {
 
-            $http.get('http://172.19.143.87:8000/api/students/' + $scope.studentData.id + '/courses_available',
+            $http.get('http://localhost:8000/api/students/' + $scope.studentData.id + '/courses_available',
                 // $httpParamSerializer(userInfo),
                 {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
                 .then(function successCallback(response) {
@@ -62,7 +62,7 @@ angular
 
         $scope.getCoursesToRegister = function() {
 
-            $http.get('http://172.19.143.87:8000/api/students/' + $scope.studentData.id + '/registration',
+            $http.get('http://localhost:8000/api/students/' + $scope.studentData.id + '/registration',
                 // $httpParamSerializer(userInfo),
                 {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
                 .then(function successCallback(response) {
@@ -75,7 +75,7 @@ angular
         }
 
         $scope.studentSchedule = function() {
-            $http.get('http://172.19.143.87:8000/api/students/' + $scope.studentData.id + '/schedule',
+            $http.get('http://localhost:8000/api/students/' + $scope.studentData.id + '/schedule',
                 // $httpParamSerializer(userInfo),
                 {headers: {'Content-Type': 'application/json'}})
                 .then(function successCallback(response) {

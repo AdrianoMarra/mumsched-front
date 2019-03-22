@@ -15,7 +15,7 @@ angular
 
   if(paramValue) {
     $scope.isUpdate = true;
-    $http.get('http://172.19.143.87:8000/api/admins/' + paramValue,
+    $http.get('http://localhost:8000/api/admins/' + paramValue,
       {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
       .then(function successCallback(response) {
         $scope.admin = response.data;
@@ -26,7 +26,7 @@ angular
   }
 
   $scope.loadList = function (){
-    $http.get('http://172.19.143.87:8000/api/admins',
+    $http.get('http://localhost:8000/api/admins',
     {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
     .then(function successCallback(response) {
       $scope.admins = response.data;
@@ -35,7 +35,7 @@ angular
   };
 
   $scope.delete = function(id) {
-    $http.delete('http://172.19.143.87:8000/api/admins/' + id,
+    $http.delete('http://localhost:8000/api/admins/' + id,
     {headers: {'Content-Type': 'application/json'}})
     .then(function successCallback(response) {
       $state.reload();
@@ -48,7 +48,7 @@ angular
   };
   $scope.create = function() {
   	$scope.admin.password = "12345"; //default
-    $http.post('http://172.19.143.87:8000/api/admins', $scope.admin,
+    $http.post('http://localhost:8000/api/admins', $scope.admin,
     {headers: {'Content-Type': 'application/json'}})
     .then(function successCallback(response) {
       $location.path( "/admin/dashboard/admins" );
@@ -57,7 +57,7 @@ angular
   };
 
   $scope.update = function() {
-    $http.put('http://172.19.143.87:8000/api/admins/' + paramValue, $scope.admin,
+    $http.put('http://localhost:8000/api/admins/' + paramValue, $scope.admin,
     {headers: {'Content-Type': 'application/json'}})
     .then(function successCallback(response) {
       $location.path( "/admin/dashboard/admins" );

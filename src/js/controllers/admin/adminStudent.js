@@ -14,7 +14,7 @@ angular
   $scope.entries = {};
   var paramValue = $location.search().id;
 
-  $http.get('http://172.19.143.87:8000/api/entries',
+  $http.get('http://localhost:8000/api/entries',
     {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
     .then(function successCallback(response) {
       $scope.entries = response.data;
@@ -23,7 +23,7 @@ angular
 
   if(paramValue) {
     $scope.isUpdate = true;
-    $http.get('http://172.19.143.87:8000/api/students/' + paramValue,
+    $http.get('http://localhost:8000/api/students/' + paramValue,
       {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
       .then(function successCallback(response) {
         $scope.student = response.data;
@@ -31,7 +31,7 @@ angular
       }, function errorCallback(response) {
     });
 
-    $http.get('http://172.19.143.87:8000/api/students/' + paramValue + '/all_blocks',
+    $http.get('http://localhost:8000/api/students/' + paramValue + '/all_blocks',
       {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
       .then(function successCallback(response) {
         $scope.blocks = response.data;
@@ -46,7 +46,7 @@ angular
     $scope.student.password = "12345";
 
     $scope.student.id_entry = $scope.entry.id;
-    $http.post('http://172.19.143.87:8000/api/students', $scope.student,
+    $http.post('http://localhost:8000/api/students', $scope.student,
     {headers: {'Content-Type': 'application/json'}})
     .then(function successCallback(response) {
       $location.path( "/admin/dashboard/students" );
@@ -65,7 +65,7 @@ angular
     });
 
     var params = {"id_blocks": blocksAssigned};
-    $http.put('http://172.19.143.87:8000/api/students/'+ paramValue +'/all_blocks', params,
+    $http.put('http://localhost:8000/api/students/'+ paramValue +'/all_blocks', params,
     {headers: {'Content-Type': 'application/json'}})
     .then(function successCallback(response) {
     }, function errorCallback(response) {
@@ -73,7 +73,7 @@ angular
 
     //update info
     $scope.student.id_entry = $scope.entry.id;
-    $http.put('http://172.19.143.87:8000/api/students/' + paramValue, $scope.student,
+    $http.put('http://localhost:8000/api/students/' + paramValue, $scope.student,
     {headers: {'Content-Type': 'application/json'}})
     .then(function successCallback(response) {
       $location.path( "/admin/dashboard/students" );
@@ -86,7 +86,7 @@ angular
   };
 
   $scope.loadList = function (){
-    $http.get('http://172.19.143.87:8000/api/students',
+    $http.get('http://localhost:8000/api/students',
     {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
     .then(function successCallback(response) {
       $scope.students = response.data;
@@ -96,7 +96,7 @@ angular
   };
 
   $scope.delete = function(id) {
-    $http.delete('http://172.19.143.87:8000/api/students/' + id,
+    $http.delete('http://localhost:8000/api/students/' + id,
     {headers: {'Content-Type': 'application/json'}})
     .then(function successCallback(response) {
       $state.reload();

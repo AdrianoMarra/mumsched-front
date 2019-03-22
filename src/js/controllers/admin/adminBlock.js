@@ -65,7 +65,7 @@ angular
 
   if(paramValue) {
     $scope.isUpdate = true;
-    $http.get('http://172.19.143.87:8000/api/blocks/' + paramValue,
+    $http.get('http://localhost:8000/api/blocks/' + paramValue,
       {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
       .then(function successCallback(response) {
         $scope.block = response.data;
@@ -97,7 +97,7 @@ angular
 
     $scope.block.on_campus == true ? $scope.block.on_campus = 1 :$scope.block.on_campus = 0;
 
-    $http.post('http://172.19.143.87:8000/api/blocks', $scope.block,
+    $http.post('http://localhost:8000/api/blocks', $scope.block,
     {headers: {'Content-Type': 'application/json'}})
     .then(function successCallback(response) {
       $location.path( "/admin/dashboard/blocks" );
@@ -114,7 +114,7 @@ angular
 
     $scope.block.on_campus == true ? $scope.block.on_campus = 1 :$scope.block.on_campus = 0;
 
-    $http.put('http://172.19.143.87:8000/api/blocks/' + paramValue, $scope.block,
+    $http.put('http://localhost:8000/api/blocks/' + paramValue, $scope.block,
     {headers: {'Content-Type': 'application/json'}})
     .then(function successCallback(response) {
       $location.path( "/admin/dashboard/blocks" );
@@ -127,7 +127,7 @@ angular
   };
 
   $scope.loadList = function (){
-    $http.get('http://172.19.143.87:8000/api/blocks',
+    $http.get('http://localhost:8000/api/blocks',
     {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
     .then(function successCallback(response) {
       $scope.blocks = response.data;
@@ -136,7 +136,7 @@ angular
   };
 
   $scope.delete = function(id) {
-    $http.delete('http://172.19.143.87:8000/api/blocks/' + id,
+    $http.delete('http://localhost:8000/api/blocks/' + id,
     {headers: {'Content-Type': 'application/json'}})
     .then(function successCallback(response) {
       $state.reload();

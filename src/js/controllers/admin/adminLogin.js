@@ -17,7 +17,7 @@ angular
   function validateLogin(userInfo) {
 
     $http.post(
-      'http://172.19.143.87:8000/api/login/admin',
+      'http://localhost:8000/api/login/admin',
       userInfo,
       {headers: {'Content-Type': 'application/json'}})
       .then(function successCallback(response) {
