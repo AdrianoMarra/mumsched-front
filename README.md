@@ -1,6 +1,12 @@
 # mumsched-front
 
-Our project includes two different parts, a restful API (https://github.com/manelmiq/mumsched-api.git) and a front-end client (https://github.com/AdrianoMarra/mumsched-front.git) that reads from it.
+Our MUMSched project includes two different parts, a restful API (https://github.com/manelmiq/mumsched-api.git) and a front-end client (https://github.com/AdrianoMarra/mumsched-front.git) that reads from it.
+
+The project aimed to create a course enrollment system for MUM students, the system includes three different dashboards:
+* One for system admins, which allows the System admin to manage: students, faculty, other admins, entries, blocks, courses and sections. 
+* One for Faculty, which allows a faculty member to manage blocks and course preferences and also view his/her schedule.
+* One for students, where he/she can view their available courses, register to one course per block and also view the schedule.
+
 
 The technologies used in this project are: 
 
